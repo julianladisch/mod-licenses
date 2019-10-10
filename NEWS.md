@@ -1,3 +1,6 @@
+## 1.11.1 2019-10-10
+ * Hotfix for broken migrations
+
 ## 1.11.0 2019-09-11
  * ERM-279 Provide integration tests for license creation covering start date, end date, status, type and end date semantics
    * ERM-369 Integration tests for license tags
