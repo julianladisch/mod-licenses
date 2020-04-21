@@ -1,11 +1,14 @@
 import org.olf.licenses.License
 import org.olf.licenses.LicenseOrg
+import org.olf.licenses.AlternateName
 
 import groovy.transform.*
 
 @Field License license
 
 inherits template: '/licenseCore/licenseCore'
+
+def altNames = license.alternateNames?.toSorted { AlternateName a, AlternateName b -> a.name <=> b.name }
 
 // We can start the pre-fetching of things we are going to need.
 final String objectProperty = 'orgsUuid_object'
@@ -20,4 +23,8 @@ if ( controllerName == 'license' && actionName.toLowerCase() == 'show' ) {
 }
 
 // The majority of this template is inherited from the parent template. Just add the extensions.
-json g.render(license, [includes: ['type', 'orgs', 'amendments'], expand: ['type', 'orgs', 'amendments']])
+json g.render(license, [includes: ['type', 'orgs', 'amendments'], expand: ['type', 'orgs', 'amendments'], excludes: ['alternateNames']]) {
+  if (altNames) {
+    alternateNames g.render(altNames)
+  }
+}

@@ -1,15 +1,12 @@
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import org.olf.licenses.LicenseCore
-import org.olf.licenses.AlternateName
 import groovy.transform.Field
 
 @Field LicenseCore licenseCore
 
-def altNames = licenseCore.alternateNames?.toSorted { AlternateName a, AlternateName b -> a.name <=> b.name }
-
 // The new date formats seem to be causing issues when included here. So Exclude them from g.render and explicitly include them below.
-json g.render(licenseCore, [excludes: ['startDate','endDate', 'alternateNames'], expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
+json g.render(licenseCore, [excludes: ['startDate','endDate'], expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
   if (licenseCore.startDate) startDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.startDate))
   if (licenseCore.endDate) endDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.endDate))
 
@@ -19,8 +16,4 @@ json g.render(licenseCore, [excludes: ['startDate','endDate', 'alternateNames'],
     }
   }
   openEnded licenseCore.openEnded
-
-  if (altNames) {
-    alternateNames g.render(altNames)
-  }
 }

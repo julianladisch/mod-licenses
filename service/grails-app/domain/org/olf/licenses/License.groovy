@@ -16,6 +16,8 @@ class License extends LicenseCore implements CustomProperties, MultiTenant<Licen
   RefdataValue type
   String localReference
 
+  Set<AlternateName> alternateNames
+
   static copyByCloning = ['customProperties', 'docs', 'supplementaryDocs', 'contacts']
   static cloneStaticValues = [
     name: { "Copy of: ${owner.name}" /* Owner is the current object. */ },
@@ -23,11 +25,13 @@ class License extends LicenseCore implements CustomProperties, MultiTenant<Licen
   ]  
   
   static hasMany = [
+    alternateNames: AlternateName,
     orgs:LicenseOrg,
     amendments:LicenseAmendment
   ]
 
   static mappedBy = [
+    alternateNames: 'owner',
     orgs: 'owner',
     amendments: 'owner'
   ]
@@ -46,6 +50,7 @@ class License extends LicenseCore implements CustomProperties, MultiTenant<Licen
     type column: 'lic_type_rdv_fk'
     orgs cascade: 'all-delete-orphan'
     localReference column: 'lic_local_reference'
+    alternateNames cascade: 'all-delete-orphan'
     amendments cascade: 'all-delete-orphan', sort: 'startDate', order: 'desc'
   }
   

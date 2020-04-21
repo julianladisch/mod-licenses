@@ -9,7 +9,7 @@ public class AlternateName implements MultiTenant<AlternateName>, Clonable<Alter
 	String id
     String name
 	
-	static belongsTo = [ owner: LicenseCore ]
+	static belongsTo = [ owner: License ]
   
 	  static mapping = {
       // table 'alternate_name'
