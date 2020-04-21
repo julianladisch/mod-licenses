@@ -43,7 +43,10 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
   @Defaults(['Explicit', 'Open ended'])
   RefdataValue endDateSemantics
 
+  Set<AlternateName> alternateNames
+
   static hasMany = [
+    alternateNames: AlternateName,
     links:LicenseLink,
     tags:Tag,
     docs: DocumentAttachment,
@@ -52,6 +55,7 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
   ]
 
   static mappedBy = [
+    alternateNames: 'owner',
     links:'owner',
     contacts: 'owner'
   ]
@@ -79,6 +83,7 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
             startDate column: 'lic_start_date'
               endDate column: 'lic_end_date'
      endDateSemantics column: 'lic_end_date_semantics_fk'
+       alternateNames cascade: 'all-delete-orphan'
                  tags cascade: 'all-delete-orphan', joinTable: [name: 'license_tag', key: 'license_tags_id']
                 links cascade: 'all-delete-orphan'
              contacts cascade: 'all-delete-orphan'
