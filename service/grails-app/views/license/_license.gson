@@ -23,7 +23,7 @@ if ( controllerName == 'license' && actionName.toLowerCase() == 'show' ) {
 }
 
 // The majority of this template is inherited from the parent template. Just add the extensions.
-json g.render(license, [includes: ['type', 'orgs', 'amendments'], expand: ['type', 'orgs', 'amendments'], excludes: ['alternateNames']]) {
+json g.render(license, [includes: ['type', 'orgs', 'amendments'], expand: ['type', 'orgs', 'amendments']]) {
   if (altNames) {
     alternateNames g.render(altNames)
   }
