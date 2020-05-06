@@ -6,7 +6,7 @@ import groovy.transform.Field
 @Field LicenseCore licenseCore
 
 // The new date formats seem to be causing issues when included here. So Exclude them from g.render and explicitly include them below.
-json g.render(licenseCore, [excludes: ['startDate','endDate'], expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
+json g.render(licenseCore, [excludes: ['startDate','endDate', 'type', 'orgs', 'amendments', 'alternateNames'], expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
   if (licenseCore.startDate) startDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.startDate))
   if (licenseCore.endDate) endDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.endDate))
 
