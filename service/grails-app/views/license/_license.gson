@@ -8,6 +8,12 @@ import groovy.transform.*
 
 inherits template: '/licenseCore/licenseCore'
 
+def should_include = [
+  'type',
+  'orgs',
+  'amendments'
+]
+
 def altNames = license.alternateNames?.toSorted { AlternateName a, AlternateName b -> a.name <=> b.name } ?: []
 
 // We can start the pre-fetching of things we are going to need.
@@ -23,6 +29,6 @@ if ( controllerName == 'license' && actionName.toLowerCase() == 'show' ) {
 }
 
 // The majority of this template is inherited from the parent template. Just add the extensions.
-json g.render(license, [includes: ['type', 'orgs', 'amendments'], expand: ['type', 'orgs', 'amendments'], excludes: ['alternateNames']]) {
+json g.render(license, [includes: should_include, expand: ['type', 'orgs', 'amendments']]) {
   alternateNames g.render(altNames)
 }
