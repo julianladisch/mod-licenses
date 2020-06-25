@@ -1,3 +1,6 @@
+## 2.2.2 2020-06-25
+ * ERM-970 500 status on when licenses have Documents without a file attachment
+
 ## 2.2.1 2020-06-23
  * ERM-841 Duplicate license: Files are not copied to the duplicated license record
 
