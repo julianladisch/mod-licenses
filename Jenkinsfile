@@ -7,7 +7,7 @@ pipeline {
     GRADLEW_OPTS = '--console plain --no-daemon'
     BUILD_DIR = "${env.WORKSPACE}/service"
     MD = "${env.WORKSPACE}/service/build/resources/main/okapi/ModuleDescriptor.json"
-    doKubeDeploy = true
+    doKubeDeploy = false
   }
 
   options {
