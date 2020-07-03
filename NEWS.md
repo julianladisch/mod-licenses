@@ -1,3 +1,7 @@
+## 2.2.3 2020-07-03
+
+ * ERM-975 Update resource path for organizations from /organizations-storage/ to /organizations
+
 ## 2.2.2 2020-06-25
  * ERM-970 500 status on when licenses have Documents without a file attachment
 
