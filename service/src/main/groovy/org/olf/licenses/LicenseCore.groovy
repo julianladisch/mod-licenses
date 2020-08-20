@@ -116,7 +116,7 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
   public LicenseCore plus (LicenseCore la) {
     
     final Set<String> seen = []
-    final List<CustomProperties> newList = la.customProperties.value.findResults { CustomProperty v -> 
+    List<CustomProperties> newList = la.customProperties.value.findResults { CustomProperty v -> 
       if (seen.contains(v.definition.name)) {
         return null
       }

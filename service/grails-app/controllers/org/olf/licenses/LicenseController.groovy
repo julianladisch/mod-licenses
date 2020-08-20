@@ -35,7 +35,7 @@ class LicenseController extends OkapiTenantAwareController<License> {
     }
     
     // Otherwise let's mutate the original license and only supply the applicable terms.
-    final License license = params.id ? License.read(params.id) : null
+    License license = params.id ? License.read(params.id) : null
     
     if (license) {
       // Lookup the active status first.
