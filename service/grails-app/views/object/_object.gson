@@ -6,12 +6,20 @@ import org.grails.orm.hibernate.cfg.GrailsHibernateUtil
 
 
 @Field Object object
+object = GrailsHibernateUtil.unwrapIfProxy(object)
+
+System.out.println("_object template called with type ${object.class}, value: ${object}")
 
 /**
  * Fallback template for all things not explicitly templated.
  * 
  * We should expand this to work with collections of things, maps and then do the right thing.
  */
+
+if (object == null) {
+  out << 'null'
+  return
+}
 
 if (object instanceof Map) {
   // Map
@@ -36,7 +44,7 @@ if (object instanceof Map) {
     out << JsonOutput.toJson(object)
   } else {
     // Use the built in rendering.
-    json g.render (GrailsHibernateUtil.unwrapIfProxy(object))
+    json g.render (object)
   }
 }
 

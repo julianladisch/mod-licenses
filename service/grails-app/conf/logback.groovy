@@ -28,7 +28,7 @@ appender('STDOUT', ConsoleAppender) {
 
 // Default level should be info.
 root(WARN, ['STDOUT'])
-logger ('org.hibernate.orm.deprecation', INFO)
+logger ('org.hibernate.orm.deprecation', ERROR)
 logger ('com.k_int.okapi.OkapiSchemaHandler', INFO)
 
 // Just increase verbosity for dev/test.
@@ -52,6 +52,7 @@ if (devEnv || Environment.currentEnvironment == Environment.TEST) {
   logger 'com.k_int', DEBUG
   logger 'com.k_int.web.toolkit', DEBUG
   logger 'org.olf', DEBUG
+  logger 'grails.views', TRACE
   
   
   if (Environment.currentEnvironment == Environment.TEST) {
@@ -59,7 +60,7 @@ if (devEnv || Environment.currentEnvironment == Environment.TEST) {
 //    logger 'org.hibernate', DEBUG
     logger 'com.k_int.okapi.OkapiClient', TRACE
     logger 'groovy.net.http.JavaHttpBuilder', DEBUG
-    logger 'org.hibernate.loader.criteria', TRACE
+//    logger 'org.hibernate.loader.criteria', TRACE
     logger 'org.hibernate.SQL', DEBUG
     logger 'org.hibernate.type.descriptor.sql.BasicBinder', TRACE
   }

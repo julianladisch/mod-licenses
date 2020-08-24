@@ -21,15 +21,23 @@ def should_include = [
   'customProperties'
 ]
 
-// The new date formats seem to be causing issues when included here. So Exclude them from g.render and explicitly include them below.
+//json {
+//  test "success"
+//}
 json g.render(licenseCore, [includes: should_include, expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
   if (licenseCore.startDate) startDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.startDate))
   if (licenseCore.endDate) endDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.endDate))
-
-  _links {
-    linkedResources {
-      href "/licenses/licenseLinks?filter=owner.id%3d${licenseCore.id}"
-    }
-  }
   openEnded licenseCore.openEnded
 }
+// The new date formats seem to be causing issues when included here. So Exclude them from g.render and explicitly include them below.
+//json g.render(licenseCore, [includes: should_include, expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
+//  if (licenseCore.startDate) startDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.startDate))
+//  if (licenseCore.endDate) endDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.endDate))
+//
+//  _links {
+//    linkedResources {
+//      href "/licenses/licenseLinks?filter=owner.id%3d${licenseCore.id}"
+//    }
+//  }
+//  openEnded licenseCore.openEnded
+//}
