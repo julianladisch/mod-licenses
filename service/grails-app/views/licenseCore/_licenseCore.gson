@@ -24,7 +24,7 @@ def should_include = [
 //json {
 //  test "success"
 //}
-json g.render(licenseCore, [includes: should_include, expand: ['tags', 'customProperties', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
+json g.render(licenseCore, [includes: should_include, expand: ['tags', 'customProperties', 'endDateSemantics', 'status', 'contacts', 'docs', 'supplementaryDocs' ]]) {
   if (licenseCore.startDate) startDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.startDate))
   if (licenseCore.endDate) endDate (DateTimeFormatter.ISO_LOCAL_DATE.format(licenseCore.endDate))
   openEnded licenseCore.openEnded
