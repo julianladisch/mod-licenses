@@ -8,7 +8,6 @@ import com.k_int.web.toolkit.refdata.RefdataValue
 import com.opencsv.ICSVWriter
 
 import grails.gorm.multitenancy.CurrentTenant
-import grails.gorm.transactions.Transactional
 
 /**
  * Service for exporting Licenses.
@@ -71,7 +70,7 @@ public class ExportService {
       }
     }
     if (exportData.include?.customProperties) {
-      for (Map.Entry<String, Boolean> custProp : exportData.include.customProperties) {
+      for (Map.Entry<String, Boolean> custProp : exportData.include.customProperties as Map) {
         if (custProp.value == true) {
           // Output the property parts.
           for (String propPart : ExportControlObject.CUST_PROP_PART_ORDER) {
@@ -81,7 +80,7 @@ public class ExportService {
               if (propPart == 'value') {
                 result << custProp.key
               } else {            
-                result << "${custProp.key}:${propPart}"
+                result << ("${custProp.key}:${propPart}" as String)
               }
             }
           }
@@ -102,7 +101,7 @@ public class ExportService {
     
     if (exportData.include?.customProperties) {
       // Also output the terms.
-      for (Map.Entry<String, Boolean> custProp : exportData.include.customProperties) {
+      for (Map.Entry<String, Boolean> custProp : exportData.include.customProperties as Map) {
         if (custProp.value == true) {
           // Output the property.
           result.addAll( customProperty( license, custProp.key, exportData ) )
