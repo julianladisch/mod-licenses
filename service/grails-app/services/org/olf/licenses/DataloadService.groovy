@@ -51,14 +51,14 @@ class DataloadService {
   // ],
   def upsertRefdataCategory(rdc) {
     log.debug("upsertRefdataCategory(${rdc})")
-    def cat = RefdataCategory.findByDesc(rdc.catname) ?: new RefdataCategory(desc:rdc.catname, label:rdc.description).save(flush:true, failOnError:true)
+    def cat = RefdataCategory.findByDesc(rdc.catname) ?: new RefdataCategory(desc:rdc.catname, label:rdc.description).save(failOnError:true)
 
     rdc.values.each { rdcv ->
       def val = RefdataValue.findByOwnerAndValue(cat, rdcv.value) ?: new RefdataValue(owner:cat, 
                                                                                       value:rdcv.value, 
                                                                                       description:rdcv.description, 
                                                                                       sortKey:rdcv.sortKey, 
-                                                                                      icon:rdcv.style).save(flush:true, failOnError:true)
+                                                                                      icon:rdcv.style).save(failOnError:true)
     }
   }
 
@@ -66,7 +66,7 @@ class DataloadService {
     log.debug("upsertPropertyDefinition(${pd})");
     CustomPropertyDefinition dbpd = CustomPropertyDefinition.findByName(pd.propname)
     if ( dbpd == null ) {
-      dbpd = new CustomPropertyDefinition(name:pd.propname, descr:pd.desc, type:pd.type, refdataCategory:pd.category).save(flush:true, failOnError:true)
+      dbpd = new CustomPropertyDefinition(name:pd.propname, descr:pd.desc, type:pd.type, refdataCategory:pd.category).save(failOnError:true)
     }
   }
 }
