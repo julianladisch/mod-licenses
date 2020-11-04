@@ -14,7 +14,6 @@ import com.k_int.web.toolkit.refdata.RefdataValue
 import com.k_int.web.toolkit.tags.Tag
 
 import grails.gorm.MultiTenant
-import grails.gorm.multitenancy.Tenants
 import grails.gorm.annotation.Entity
 
 @Entity
