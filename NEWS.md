@@ -1,3 +1,6 @@
+## 3.0.1 2020-11-06
+ * ERM-1201 Editing Amendment causes error
+
 ## 3.0.0 2020-10-14
  * ERM-1046 Non-phrase searching support for licenses
  * ERM-967 Add "Note" to Organisation link in Licenses

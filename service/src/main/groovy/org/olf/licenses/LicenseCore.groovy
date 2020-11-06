@@ -97,16 +97,19 @@ abstract class LicenseCore implements CustomProperties,MultiTenant<LicenseCore> 
     return result;
   }
 
-  public void setOpenEnded(boolean value) {
-    if ( value ) {
-      setEndDateSemanticsFromString('Open Ended')
-      if ( endDate != null ) {
-        endDate=null;
+  public void setOpenEnded(final boolean value) {
+    // Determine/Set everything we can here.
+    final String cat_desc = LicenseCore.getEndDateSemanticsCategory()
+    final String norm_value = value == true ? RefdataValue.normValue('Open ended') : RefdataValue.normValue('Explicit')
+    // Just directly query.
+    RefdataValue rdv = RefdataValue.createCriteria().get {
+      createAlias ('owner', 'cat')
+      and {
+        eq 'cat.desc', cat_desc
+        eq 'value', norm_value
       }
     }
-    else {
-      setEndDateSemanticsFromString('Explicit')
-    }
+    if (rdv) this.setEndDateSemantics( rdv )
   }
   
   /**
