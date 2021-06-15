@@ -1,3 +1,5 @@
+## 3.3.0 (In Progress)
+
 ## 3.2.0 2021-06-15
  * ERM-1729 Is Set / Is Not Set doesn't work for Open Ended filter in license simple search widget
  * ERM-1728 Error on retrieving License CustomProperties
