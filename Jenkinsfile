@@ -53,9 +53,9 @@ pipeline {
       }
     }
 
-    stage('Lint raml-cop') {
+    stage('API lint') {
       steps {
-        runLintRamlCop()
+        runApiLint('RAML', 'ramls', '')
       }
     }
 
