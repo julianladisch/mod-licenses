@@ -1,3 +1,5 @@
+## 4.1.0 (In progress)
+
 ## 4.0.0 2021-10-01
  * ERM-1849 Error on adding amendment to a license
  * ERM-1775 Regularly remove organizations that do not have any links to Licenses
