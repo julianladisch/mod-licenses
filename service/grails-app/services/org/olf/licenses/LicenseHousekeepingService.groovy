@@ -1,5 +1,7 @@
 package org.olf.licenses
 
+import com.k_int.okapi.OkapiTenantResolver
+
 import grails.events.annotation.Subscriber
 import grails.gorm.multitenancy.Tenants
 import grails.gorm.transactions.Transactional
