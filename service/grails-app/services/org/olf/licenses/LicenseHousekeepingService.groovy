@@ -1,7 +1,6 @@
 package org.olf.licenses
 
 import com.k_int.okapi.OkapiTenantResolver
-
 import grails.events.annotation.Subscriber
 import grails.gorm.multitenancy.Tenants
 import grails.gorm.transactions.Transactional
@@ -120,6 +119,7 @@ public class LicenseHousekeepingService {
             [ 'fileStorage', 'S3AccessKey',   'String', null,                 default_aws_access_key_id ?: 'ACCESS_KEY' ],
             [ 'fileStorage', 'S3SecretKey',   'String', null,                 default_aws_secret ?: 'SECRET_KEY' ],
             [ 'fileStorage', 'S3BucketName',  'String', null,                 default_aws_bucket ?: "${tenantId}-shared" ],
+            [ 'fileStorage', 'S3BucketRegion','String', null,                 default_aws_region ?: "us-east-1" ],
             [ 'fileStorage', 'S3ObjectPrefix','String', null,                 "/${tenantId}/agreements/" ],
           ].each { st_row ->
             log.debug("Check app setting ${st_row}");
