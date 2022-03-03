@@ -1,3 +1,5 @@
+## 4.2.0 In progress
+
 ## 4.1.0 2022-03-03
   * ERM-2037 Remove 'is not' option from Organization filter in Licenses simple search
   * ERM-1975 Script to insert and update /licenses/refdata entries
