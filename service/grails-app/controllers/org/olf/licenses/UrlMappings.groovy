@@ -43,10 +43,7 @@ class UrlMappings {
 
     '/licenses/custprops'(resources: 'customPropertyDefinition') {
       collection {
-        "/" (controller: 'customPropertyDefinition', action: 'index') {
-          perPage = { params.perPage ?: 100 }
-//          sort = [ 'primary;desc', 'weight;asc', 'id;asc']
-        }
+        "/" (controller: 'customPropertyDefinition', action: 'index')
         "/contexts" (controller: 'customPropertyDefinition', action: "fetchContexts", method: 'GET')
       }
     }
