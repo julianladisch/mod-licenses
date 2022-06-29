@@ -1,4 +1,13 @@
-## 4.2.0 In progress
+## 4.2.0 2022-06-29
+  * ERM-2218 Removing values from multi-valued custom property in UI does not update the values
+  * ERM-2201 Error on attempting to render agreement with a supplementary property
+  * ERM-2124 Add multi-value support to custom properties
+  * ERM-2070 mod-licenses Grails wrapper SAXParseException
+  * ERM-2044 Ability to make custom properties deprecated
+  * ERM-2043 Implement updated design for term management in license settings (Endpoint added to obtain all contexts on Terms)
+  * ERM-2042 Duplicating agreement/license inc. documents moves files from original to new agreement/license
+  * ERM-778 Add Date type to customProperties
+  * Removed default perPage 100 in urlMappings for customPropertyDefinitions
 
 ## 4.1.0 2022-03-03
   * ERM-2037 Remove 'is not' option from Organization filter in Licenses simple search
