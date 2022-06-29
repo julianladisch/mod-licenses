@@ -1,3 +1,5 @@
+## 4.3.0 In progress
+
 ## 4.2.0 2022-06-29
   * ERM-2218 Removing values from multi-valued custom property in UI does not update the values
   * ERM-2201 Error on attempting to render agreement with a supplementary property
