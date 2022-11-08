@@ -139,6 +139,7 @@ dependencies {
   compile 'com.opencsv:opencsv:5.2'
   compile 'commons-io:commons-io:2.6'
 
+  compile 'net.sf.json-lib:json-lib:2.4'
   compile 'com.k_int.grails:web-toolkit-ce:6.3.0-rc.4'
   compile 'com.k_int.okapi:grails-okapi:4.1.2'
 
